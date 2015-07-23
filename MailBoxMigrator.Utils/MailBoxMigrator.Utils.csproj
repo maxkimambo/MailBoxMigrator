@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D29EBF38-F013-4FD4-8A20-2AA7F5AB7F32}</ProjectGuid>
+    <ProjectGuid>{16F272E2-E29D-4D55-8214-88AE6979C555}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MailBoxMigrator.Core</RootNamespace>
-    <AssemblyName>MailBoxMigrator.Core</AssemblyName>
+    <RootNamespace>MailBoxMigrator.Utils</RootNamespace>
+    <AssemblyName>MailBoxMigrator.Utils</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.0.1\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,24 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientParameters.cs" />
-    <Compile Include="IMailBox.cs" />
-    <Compile Include="MailBox.cs" />
-    <Compile Include="MigrationService.cs" />
+    <Compile Include="LogWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\S22.Imap\S22.Imap\S22.Imap.csproj">
-      <Project>{369c32a5-e099-4bd5-bbbf-51713947ca99}</Project>
-      <Name>S22.Imap</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MailBoxMigrator.Utils\MailBoxMigrator.Utils.csproj">
-      <Project>{16f272e2-e29d-4d55-8214-88ae6979c555}</Project>
-      <Name>MailBoxMigrator.Utils</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
